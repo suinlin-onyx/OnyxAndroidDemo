@@ -1,0 +1,7 @@
+<resources>
+    <string name="ctm_dialog_title">Настройки подсветки</string>
+    <string name="fl_light">Яркость: %1$d</string>
+    <string name="accessibility_brightness">"Яркость экрана"</string>
+    <string name="warm_light">Тёплый свет: %1$d</string>
+    <string name="cold_light">Холодный свет: %1$d</string>
+</resources>

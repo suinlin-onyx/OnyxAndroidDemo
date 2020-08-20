@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name" translatable="false">Brightness</string>
+    <string name="ctm_dialog_title">Frontlight Adjustment</string>
+    <string name="fl_light">Light: %1$d</string>
+    <string name="accessibility_brightness">"Display brightness"</string>
+    <string name="warm_light">Warm Light: %1$d</string>
+    <string name="cold_light">Cold Light: %1$d</string>
+</resources>

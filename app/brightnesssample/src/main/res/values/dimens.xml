@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="brightness_test_layout_margin">10dp</dimen>
+    <dimen name="tittle_bar_height">53dp</dimen>
+    <dimen name="item_text_size">30sp</dimen>
+
+    <dimen name="ctm_message_text_size">18sp</dimen>
+    <dimen name="ctm_brightness_fragment_top">25dp</dimen>
+    <dimen name="ctm_brightness_fragment_left">50dp</dimen>
+    <dimen name="light_bar_panel_margin">9dp</dimen>
+    <dimen name="octm_brightness_fragment_button_icon_padding">5dp</dimen>
+    <dimen name="add_brightness_button_width">35dp</dimen>
+    <dimen name="add_brightness_button_height">35dp</dimen>
+    <dimen name="off_brightness_button_width">40dp</dimen>
+    <dimen name="off_brightness_button_height">20dp</dimen>
+    <dimen name="toggleslider_margin_horizontal">13dp</dimen>
+    <dimen name="dotted_line_width">0.5dp</dimen>
+    <dimen name="dotted_line_dash_gap">5dp</dimen>
+    <dimen name="dotted_line_dash_width">1.5dp</dimen>
+</resources>
