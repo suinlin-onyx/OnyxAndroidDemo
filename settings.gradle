@@ -1,2 +1,2 @@
-include ':app:brightnesssample'
+include ':app:OnyxDemo'
 include ':app'

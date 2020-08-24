@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            android:gravity="center"
+            android:text="@string/ctm_dialog_title"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/ctm_message_text_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/warm_light_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ctm_brightness_fragment_top"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/warm_light_messge_panel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textSize="@dimen/ctm_message_text_size"
+                            android:id="@+id/warm_light_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/warm_light" />
+
+                        <CheckBox
+                            android:id="@+id/warm_light_switch"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_alignParentRight="true"
+                            style="@style/text_background"
+                            android:button="@drawable/onyx_ctm_custom_switch" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/adjust_warm_light_panel"
+                        android:layout_marginTop="@dimen/light_bar_panel_margin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:id="@+id/warm_brightnes_down"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            style="@style/text_background"
+                            app:srcCompat="@drawable/ic_warm_light_minus" />
+
+                        <ImageButton
+                            android:id="@+id/warm_brightnes_up"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            style="@style/text_background"
+                            app:srcCompat="@drawable/ic_warm_light_add" />
+
+
+                        <LinearLayout
+                            android:id="@+id/warm_brightness_slider_layout"
+                            android:focusable="true"
+                            android:layout_toLeftOf="@id/warm_brightnes_up"
+                            android:layout_toRightOf="@id/warm_brightnes_down"
+                            android:layout_marginStart="@dimen/toggleslider_margin_horizontal"
+                            android:layout_marginEnd="@dimen/toggleslider_margin_horizontal"
+                            style="@style/text_background"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                                <SeekBar
+                                    android:id="@+id/warm_brightness_slider"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    style="@style/text_background"
+                                    android:contentDescription="@string/accessibility_brightness" />
+                            </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/dotted_line_shape"
+                />
+
+            <RelativeLayout
+                android:id="@+id/cold_light_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ctm_brightness_fragment_top"
+                android:gravity="center_vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/cold_light_messge_panel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/cold_light_value"
+                            android:textSize="@dimen/ctm_message_text_size"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/cold_light" />
+
+                        <CheckBox
+                            android:id="@+id/cold_light_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            style="@style/text_background"
+                            android:button="@drawable/onyx_ctm_custom_switch" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/adjust_cold_light_panel"
+                        android:layout_marginTop="@dimen/light_bar_panel_margin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:id="@+id/cold_brightnes_down"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            style="@style/text_background"
+                            app:srcCompat="@drawable/ic_cold_light_minus" />
+
+                        <ImageButton
+                            android:id="@+id/cold_brightnes_up"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            style="@style/text_background"
+                            app:srcCompat="@drawable/ic_cold_light_add" />
+
+                        <LinearLayout
+                            android:id="@+id/cold_brightness_slider_layout"
+                            android:layout_toLeftOf="@id/cold_brightnes_up"
+                            android:layout_toRightOf="@id/cold_brightnes_down"
+                            android:layout_marginStart="@dimen/toggleslider_margin_horizontal"
+                            android:layout_marginEnd="@dimen/toggleslider_margin_horizontal"
+                            android:focusable="true"
+                            style="@style/text_background"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <SeekBar
+                                android:id="@+id/cold_brightness_slider"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                style="@style/text_background"
+                                android:contentDescription="@string/accessibility_brightness" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>
