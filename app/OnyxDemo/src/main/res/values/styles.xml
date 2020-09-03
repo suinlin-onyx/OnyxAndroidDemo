@@ -35,13 +35,19 @@
         <item name="android:background">@drawable/button_focus_background</item>
     </style>
 
-    <style name="dpad_text_background">
+    <style name="dpad_text_background" parent="text_style">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">160dp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="text_style">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:background">@drawable/text_focus_background</item>
     </style>
 

@@ -72,16 +72,20 @@ public class MainFragment extends BaseSupportFragment<MainFragmentBinding>{
             fragments.put(Constants.FL_BRIGHTNESS, FLBrightnessFragment.newInstance(null, getContext()));
             fragments.put(Constants.CTM_BRIGHTNESS, CTMBrightnessFragment.newInstance(null, getContext()));
             fragments.put(Constants.DPAD_TEST, DpadTestFragment.newInstance(null, getContext()));
+            fragments.put(Constants.VCOM_TEST, VcomTestFragment.newInstance(null, getContext()));
             loadMultipleRootFragment(R.id.content_layout, 0,
                     fragments.get(Constants.FUNCTTION_CONTAINER),
                     fragments.get(Constants.FL_BRIGHTNESS),
                     fragments.get(Constants.CTM_BRIGHTNESS),
-                    fragments.get(Constants.DPAD_TEST));
+                    fragments.get(Constants.DPAD_TEST),
+                    fragments.get(Constants.VCOM_TEST)
+                    );
         } else {
             fragments.put(Constants.FUNCTTION_CONTAINER, firstFragment);
             fragments.put(Constants.FL_BRIGHTNESS, findChildFragment(FLBrightnessFragment.class));
             fragments.put(Constants.CTM_BRIGHTNESS, findChildFragment(CTMBrightnessFragment.class));
             fragments.put(Constants.DPAD_TEST, findChildFragment(DpadTestFragment.class));
+            fragments.put(Constants.VCOM_TEST, findChildFragment(VcomTestFragment.class));
             showHideFragment(findChildFragment(FunctionContainerFragment.class));
         }
     }

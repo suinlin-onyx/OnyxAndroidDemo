@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.onyx.android.sdk.device.Device;
+import com.onyx.android.sdk.device.SDMDevice;
 import com.onyx.brightnesssample.R;
 import com.onyx.brightnesssample.data.FunctionInfo;
 import com.onyx.brightnesssample.databinding.FunctionContainerFragmentBinding;
@@ -45,10 +46,13 @@ public class ContainerBundle {
         }
         FunctionInfoList.add(new FunctionInfo(Constants.DPAD_TEST,"Dpad"));
         FunctionInfoList.add(new FunctionInfo(Constants.DIALOG_TEST_0,"Dialog1"));
-        FunctionInfoList.add(new FunctionInfo(Constants.DIALOG_TEST_1,"Dialog2"));
-        FunctionInfoList.add(new FunctionInfo(Constants.DIALOG_TEST_2,"Dialog3"));
+
+        if (!(Device.currentDevice() instanceof SDMDevice)) {
+            FunctionInfoList.add(new FunctionInfo(Constants.VCOM_TEST,"Vcom_setting"));
+        }
+
         for (int i = 0;  i < 7; i++) {
-            FunctionInfoList.add(new FunctionInfo(Constants.UNDEFIND_TEST + i,new StringBuffer("test").append(i).toString()));
+            FunctionInfoList.add(new FunctionInfo(Constants.UNDEFIND_TEST + i,new StringBuffer("  ").append(i).toString()));
         }
     }
 
@@ -95,8 +99,15 @@ public class ContainerBundle {
                 if (tag == null) {
                     return;
                 }
+
                 int position = (int) tag;
+
                 FunctionInfo functionInfo = FunctionInfoList.get(position);
+
+                if (functionInfo.tag == Constants.UNDEFIND_TEST) {
+                    return;
+                }
+
                 if ((functionInfo.tag & Constants.DIALOG_TEST_0)  != 0) {
                     EventBus.getDefault().post(new DialogTestEvent(functionInfo.tag));
                 } else {

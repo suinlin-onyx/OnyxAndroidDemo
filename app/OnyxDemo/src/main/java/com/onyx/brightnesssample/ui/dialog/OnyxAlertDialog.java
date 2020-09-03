@@ -35,9 +35,14 @@ public class OnyxAlertDialog {
         }
     }
 
-    public void show() {
+    public AlertDialog show() {
         dialog = onyxAlertDialog.builder.show();
         adjustFocusBackground(dialog);
+        return dialog;
+    }
+
+    public void dismmis() {
+        dialog.dismiss();
     }
 
     public void adjustFocusBackground(Dialog dialog) {

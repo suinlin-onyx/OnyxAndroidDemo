@@ -85,7 +85,6 @@ public class FunctionContainerFragment extends BaseSupportFragment<FunctionConta
         builder.setNeutralButton(android.R.string.copy, null);
         builder.setPositiveButton(android.R.string.ok, null);
         OnyxAlertDialog.instance(getContext()).show();
-
     }
 
 

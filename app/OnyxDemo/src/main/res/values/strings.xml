@@ -1,8 +1,28 @@
 <resources>
-    <string name="app_name" translatable="false">Brightness</string>
+    <string name="app_name" translatable="false">OnyxDemo</string>
     <string name="ctm_dialog_title">Frontlight Adjustment</string>
     <string name="fl_light">Light: %1$d</string>
     <string name="accessibility_brightness">"Display brightness"</string>
     <string name="warm_light">Warm Light: %1$d</string>
     <string name="cold_light">Cold Light: %1$d</string>
+
+    <string name="action_settings">VCom Waveform Settings</string>
+    <string name="set_vcom">Set VCom:</string>
+    <string name="set_waveform">Set Waveform:</string>
+    <string name="set">Set</string>
+    <string name="select_file">Please select a file</string>
+    <string name="btn_back">Back</string>
+    <string name="cancel">Cancel</string>
+    <string name="devices_vcom">Device VCom :</string>
+    <string name="enter_value">Please enter a value</string>
+    <string name="select_different_value">Please select a different value</string>
+    <string name="update_vcom_succeed">Update VCom succeed</string>
+    <string name="update_vcom_failed">Update VCom failed</string>
+    <string name="update_waveform_succeed">Update Waveform succeed</string>
+    <string name="update_waveform_failed">Update Waveform failed</string>
+    <string name="select_fw_file">Please select fw file</string>
+    <string name="save_to_vendor_success">Save to vendor success</string>
+    <string name="save_to_vendor_faild">Save to vendor faild</string>
+
+
 </resources>
