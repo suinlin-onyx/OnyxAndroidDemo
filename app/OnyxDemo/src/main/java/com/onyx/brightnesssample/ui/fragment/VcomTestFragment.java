@@ -151,6 +151,7 @@ public class VcomTestFragment extends BaseSupportFragment<VcomTestFragmentBindin
     }
 
     private void showPromptDialog() {
+        OnyxAlertDialog.instance(getContext()).dismmis();
         AlertDialog.Builder builder = OnyxAlertDialog.instance(getContext()).builder;
         builder.setTitle("Set Vcom, please wait...");
         builder.setCancelable(false);

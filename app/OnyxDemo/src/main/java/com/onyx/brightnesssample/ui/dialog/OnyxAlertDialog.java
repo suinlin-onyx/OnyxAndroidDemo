@@ -42,7 +42,10 @@ public class OnyxAlertDialog {
     }
 
     public void dismmis() {
-        dialog.dismiss();
+        if (dialog != null) {
+            dialog.dismiss();
+            onyxAlertDialog = null;
+        }
     }
 
     public void adjustFocusBackground(Dialog dialog) {

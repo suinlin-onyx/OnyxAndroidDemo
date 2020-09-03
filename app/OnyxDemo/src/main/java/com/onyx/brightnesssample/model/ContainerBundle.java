@@ -44,8 +44,11 @@ public class ContainerBundle {
         if(Device.currentDevice().hasCTMBrightness(mContext)) {
             FunctionInfoList.add(new FunctionInfo(Constants.CTM_BRIGHTNESS,"Brightness"));
         }
-        FunctionInfoList.add(new FunctionInfo(Constants.DPAD_TEST,"Dpad"));
-        FunctionInfoList.add(new FunctionInfo(Constants.DIALOG_TEST_0,"Dialog1"));
+
+        if (!Device.currentDevice().isTouchable(mContext)) {
+            FunctionInfoList.add(new FunctionInfo(Constants.DPAD_TEST,"Dpad"));
+            FunctionInfoList.add(new FunctionInfo(Constants.DIALOG_TEST_0,"Dialog1"));
+        }
 
         if (!(Device.currentDevice() instanceof SDMDevice)) {
             FunctionInfoList.add(new FunctionInfo(Constants.VCOM_TEST,"Vcom_setting"));
