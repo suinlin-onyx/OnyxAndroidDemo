@@ -107,7 +107,7 @@ public class ContainerBundle {
 
                 FunctionInfo functionInfo = FunctionInfoList.get(position);
 
-                if (functionInfo.tag == Constants.UNDEFIND_TEST) {
+                if ((functionInfo.tag & Constants.UNDEFIND_TEST) != 0) {
                     return;
                 }
 

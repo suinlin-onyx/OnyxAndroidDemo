@@ -12,8 +12,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.onyx.android.sdk.api.device.FrontLightController;
+import com.onyx.android.sdk.device.Device;
 import com.onyx.brightnesssample.R;
 import com.onyx.brightnesssample.utils.BrightnessUtils;
+
+import java.util.List;
 
 public  class FLBrightnessController extends BrightnessController {
 
@@ -65,7 +68,8 @@ public  class FLBrightnessController extends BrightnessController {
             }
         });
 
-        int max = FrontLightController.getMaxFrontLightValue(mContext);
+        Integer[] lights = Device.currentDevice.getFLBrightnessValues(mContext);
+        int max = (lights == null || lights.length == 0) ? 0 : lights.length - 1;
         int min = FrontLightController.getMinFrontLightValue(mContext);
         mFLSeekBar.setMax(max < 0 ? 0 : max);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

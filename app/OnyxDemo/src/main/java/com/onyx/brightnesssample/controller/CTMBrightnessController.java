@@ -57,8 +57,10 @@ public class CTMBrightnessController extends BrightnessController {
     private void initView() {
         Integer[] colds = FrontLightController.getColdLightValues(mContext);
         Integer[] warms = FrontLightController.getWarmLightValues(mContext);
-        int max = colds == null ? 0 : colds.length;
+        int max = colds == null ? 0 : colds.length -1;
         int min = 0;
+
+        android.util.Log.d("arvin", "max: " + max);
         mColdControlSeekBar.setMax(max);
         mWarmControlSeekBar.setMax(max);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

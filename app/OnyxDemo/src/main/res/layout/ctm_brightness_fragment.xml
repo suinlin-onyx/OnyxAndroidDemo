@@ -11,6 +11,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:padding="10dp"
             android:gravity="center"
             android:text="@string/ctm_dialog_title"
