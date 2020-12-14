@@ -43,12 +43,12 @@ public class ContainerBundle {
 
     public void initData() {
         if(Device.currentDevice().hasFLBrightness(mContext)) {
-            FunctionInfoList.add(new FunctionInfo(Constants.FL_BRIGHTNESS,"Brightness")
+            FunctionInfoList.add(new FunctionInfo(Constants.FL_BRIGHTNESS,"FLBrightness")
                     .setSubTitle("Cool light"));
         }
 
         if(Device.currentDevice().hasCTMBrightness(mContext)) {
-            FunctionInfoList.add(new FunctionInfo(Constants.CTM_BRIGHTNESS,"Brightness")
+            FunctionInfoList.add(new FunctionInfo(Constants.CTM_BRIGHTNESS,"CTMBrightness")
                     .setSubTitle("Cool and warm lights"));
         }
 
