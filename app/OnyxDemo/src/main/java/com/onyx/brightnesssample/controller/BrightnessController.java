@@ -20,14 +20,20 @@ public abstract class BrightnessController implements View.OnClickListener, View
     }
 
     public void increaseBrightness(int type) {
-        //FrontLightController.increaseBrightness(mContext, type);
-        BrightnessUtils.instance(mContext).increaseBrightness(type);
+        //We recommend using this function
+        FrontLightController.increaseBrightness(mContext, type);
+
+        //Of course, you can also do it yourself.
+        //BrightnessUtils.instance(mContext).increaseBrightness(type);
         udpateStatue();
     }
 
     public void decreaseBrightness(int type) {
-        //FrontLightController.decreaseBrightness(mContext, type);
-        BrightnessUtils.instance(mContext).decreaseBrightness(type);
+        //We recommend using this function
+        FrontLightController.decreaseBrightness(mContext, type);
+
+        //Of course, you can also do it yourself
+        //BrightnessUtils.instance(mContext).decreaseBrightness(type);
         udpateStatue();
     }
 

@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.onyx.android.sdk.api.device.epd.UpdateMode;
+import com.onyx.android.sdk.api.utils.StringUtils;
 import com.onyx.android.sdk.device.Device;
 import com.onyx.android.sdk.device.SDMDevice;
 import com.onyx.brightnesssample.R;
@@ -16,8 +18,10 @@ import com.onyx.brightnesssample.databinding.FunctionContainerFragmentBinding;
 import com.onyx.brightnesssample.databinding.FunctionItemLayoutBinding;
 import com.onyx.brightnesssample.event.DialogTestEvent;
 import com.onyx.brightnesssample.event.FunctionChangeEvent;
+import com.onyx.brightnesssample.event.GlobalRefreshEvent;
 import com.onyx.brightnesssample.ui.view.BaseRecyclerView;
 import com.onyx.brightnesssample.ui.view.Constants;
+import com.onyx.brightnesssample.utils.RefreshUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -39,10 +43,24 @@ public class ContainerBundle {
 
     public void initData() {
         if(Device.currentDevice().hasFLBrightness(mContext)) {
-            FunctionInfoList.add(new FunctionInfo(Constants.FL_BRIGHTNESS,"Brightness"));
+            FunctionInfoList.add(new FunctionInfo(Constants.FL_BRIGHTNESS,"Brightness")
+                    .setSubTitle("Cool light"));
         }
+
         if(Device.currentDevice().hasCTMBrightness(mContext)) {
-            FunctionInfoList.add(new FunctionInfo(Constants.CTM_BRIGHTNESS,"Brightness"));
+            FunctionInfoList.add(new FunctionInfo(Constants.CTM_BRIGHTNESS,"Brightness")
+                    .setSubTitle("Cool and warm lights"));
+        }
+
+        {
+            FunctionInfoList.add(new FunctionInfo(Constants.GLOBAL_REFRESH_TEST, "Global Refresh"));
+        }
+
+        {
+            String refreshSubTitle = RefreshUtils.supportRegal() ? "SupportRegal Regal"
+                    : "Not SupportRegal Regal";
+            FunctionInfoList.add(new FunctionInfo(Constants.REGAL_REFRESH_TEST,"Regal Refresh")
+                    .setSubTitle(refreshSubTitle));
         }
 
         if (!Device.currentDevice().isTouchable(mContext)) {
@@ -54,9 +72,9 @@ public class ContainerBundle {
             FunctionInfoList.add(new FunctionInfo(Constants.VCOM_TEST,"Vcom_setting"));
         }
 
-        for (int i = 0;  i < 7; i++) {
-            FunctionInfoList.add(new FunctionInfo(Constants.UNDEFIND_TEST + i,new StringBuffer("  ").append(i).toString()));
-        }
+
+
+
     }
 
     public void initView() {
@@ -78,7 +96,8 @@ public class ContainerBundle {
 
             @Override
             public RecyclerView.ViewHolder onPageCreateViewHolder(ViewGroup parent, int viewType) {
-                BaseViewHolder holder = new BaseViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.function_item_layout, parent, false));
+                BaseViewHolder holder = new BaseViewHolder(LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.function_item_layout, parent, false));
                 return holder;
             }
 
@@ -88,7 +107,8 @@ public class ContainerBundle {
                 FunctionItemLayoutBinding bind = viewHolder.getBind();
                 bind.functionItemTitle.setOnClickListener(this);
                 bind.functionItemTitle.setTag(position);
-                viewHolder.bindTo(FunctionInfoList.get(position).title);
+                FunctionInfo functionInfo = FunctionInfoList.get(position);
+                viewHolder.bindTo(functionInfo.title, functionInfo.subTitle);
             }
 
             @Override
@@ -107,15 +127,22 @@ public class ContainerBundle {
 
                 FunctionInfo functionInfo = FunctionInfoList.get(position);
 
-                if ((functionInfo.tag & Constants.UNDEFIND_TEST) != 0) {
+                if (functionInfo.tag == Constants.DIALOG_TEST_0) {
+                    EventBus.getDefault().post(new DialogTestEvent(functionInfo.tag));
                     return;
                 }
 
-                if ((functionInfo.tag & Constants.DIALOG_TEST_0)  != 0) {
-                    EventBus.getDefault().post(new DialogTestEvent(functionInfo.tag));
-                } else {
-                    EventBus.getDefault().post(new FunctionChangeEvent(0, functionInfo.tag));
+                if (functionInfo.tag == Constants.GLOBAL_REFRESH_TEST){
+                    EventBus.getDefault().post(new GlobalRefreshEvent(UpdateMode.GC));
+                    return;
                 }
+
+                if (functionInfo.tag == Constants.REGAL_REFRESH_TEST){
+                    EventBus.getDefault().post(new GlobalRefreshEvent(UpdateMode.REGAL));
+                    return;
+                }
+
+                EventBus.getDefault().post(new FunctionChangeEvent(0, functionInfo.tag));
 
             }
         };
@@ -137,10 +164,15 @@ public class ContainerBundle {
             return binding;
         }
 
-        void bindTo(final String title) {
+        void bindTo(final String title, final String subTitle) {
             binding.functionItemTitle.setText(title);
+            if (!StringUtils.isNullOrEmpty(subTitle)) {
+                binding.functionItemTitleSub.setText(subTitle);
+                binding.functionItemTitleSub.setVisibility(View.VISIBLE);
+            }
             binding.executePendingBindings();
         }
+
     }
 
 }

@@ -40,6 +40,9 @@ public  class FLBrightnessController extends BrightnessController {
     }
 
     private void initView() {
+        if (!Device.currentDevice().hasFLBrightness(mContext)) {
+            return;
+        }
         mFlSeekBarLayout.setOnKeyListener(this);
         mFLSeekBar.setOnKeyListener(this);
 
@@ -54,6 +57,7 @@ public  class FLBrightnessController extends BrightnessController {
                     return;
                 }
                 FrontLightController.setBrightness(mContext, progress);
+                BrightnessUtils.instance(mContext).setLightProgress(FrontLightController.LIGHT_TYPE_FL, progress);
                 udpateStatue();
             }
 
@@ -69,6 +73,9 @@ public  class FLBrightnessController extends BrightnessController {
         });
 
         Integer[] lights = Device.currentDevice.getFLBrightnessValues(mContext);
+        if (lights == null) {
+            android.util.Log.d("arvin", "FLBrightnessController, lights == null");
+        }
         int max = (lights == null || lights.length == 0) ? 0 : lights.length - 1;
         int min = FrontLightController.getMinFrontLightValue(mContext);
         mFLSeekBar.setMax(max < 0 ? 0 : max);

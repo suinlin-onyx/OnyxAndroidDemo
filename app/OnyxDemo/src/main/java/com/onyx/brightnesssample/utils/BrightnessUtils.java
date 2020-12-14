@@ -46,12 +46,10 @@ public class BrightnessUtils {
     }
 
     public void increaseBrightness(final int lightType) {
-        //FrontLightController.increaseBrightness(mContext, type);
         stepAdjustBrightness(lightType, true);
     }
 
     public void decreaseBrightness(final int lightType) {
-        //sFrontLightController.decreaseBrightness(mContext, type);
         stepAdjustBrightness(lightType, false);
     }
 

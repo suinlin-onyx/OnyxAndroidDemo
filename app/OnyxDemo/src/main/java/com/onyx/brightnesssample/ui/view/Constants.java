@@ -10,6 +10,8 @@ public class Constants {
     public static int DIALOG_TEST_1 = 0x00000011;
     public static int DIALOG_TEST_2 = 0x00000012;
     public static int VCOM_TEST = 0x00000020;
+    public static int GLOBAL_REFRESH_TEST = 0x00000021;
+    public static int REGAL_REFRESH_TEST = 0x00000022;
     public static int UNDEFIND_TEST = 0x10000000;
 
 

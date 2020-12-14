@@ -7,20 +7,24 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.onyx.android.sdk.api.device.epd.EpdController;
+import com.onyx.android.sdk.api.device.epd.UpdateMode;
 import com.onyx.brightnesssample.R;
 import com.onyx.brightnesssample.base.BaseSupportFragment;
 import com.onyx.brightnesssample.databinding.MainFragmentBinding;
 import com.onyx.brightnesssample.event.BackToRootFragmentEvent;
-import com.onyx.brightnesssample.event.DialogTestEvent;
 import com.onyx.brightnesssample.event.FunctionChangeEvent;
+import com.onyx.brightnesssample.event.GlobalRefreshEvent;
 import com.onyx.brightnesssample.ui.view.Constants;
+import com.onyx.brightnesssample.utils.RefreshUtils;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.onyx.android.sdk.api.device.epd.UpdateMode.GC;
 
 
 @SuppressLint("ValidFragment")
@@ -98,7 +102,15 @@ public class MainFragment extends BaseSupportFragment<MainFragmentBinding>{
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onFunctionChangeEvent(FunctionChangeEvent event) {
+        android.util.Log.d("arvin", "onFunctionChangeEvent");
         showHideFragment(fragments.get(event.targetType), findChildFragment(FunctionContainerFragment.class));
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onGlobalRefreshEvent(GlobalRefreshEvent event) {
+        android.util.Log.d("arvin", "onGlobalRefreshEvent : " + event.updateMode.name());
+        RefreshUtils.invalidate(binding.contentLayout, event.updateMode);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
